@@ -48,13 +48,10 @@ Search the project for these strings and replace every occurrence:
 
 | Placeholder | Where | Replace with |
 |---|---|---|
-| `https://apps.apple.com/app/idAPP_STORE_ID` | `index.html`, `invite/index.html` | Real App Store product URL |
-| `https://play.google.com/store/apps/details?id=ANDROID_PACKAGE_NAME` | `index.html`, `invite/index.html` | Real Google Play product URL |
 | `support@outfitstravel.app` | `support/` | Real support email address (legal pages use `miles.d.au@gmail.com` from the canonical policy) |
 | `APPLE_TEAM_ID` | `.well-known/apple-app-site-association` | Apple Developer Team ID (e.g. `ABCDE12345`) |
 | `IOS_BUNDLE_ID` | `.well-known/apple-app-site-association` | iOS bundle identifier (e.g. `app.outfitstravel.ios`) |
-| `ANDROID_PACKAGE_NAME` | `.well-known/assetlinks.json` (+ Play URLs above) | Android application ID (e.g. `app.outfitstravel.android`) |
-| `ANDROID_SHA256_CERT_FINGERPRINT` | `.well-known/assetlinks.json` | SHA-256 fingerprint of the **release** signing certificate |
+| `ANDROID_SHA256_CERT_FINGERPRINT` | `.well-known/assetlinks.json` | SHA-256 fingerprint of the **release** signing certificate (package name `com.milesau.Outfits` is already filled in) |
 | `/assets/og-image.png` | All pages (`og:image` / `twitter:image`) | A real 1200×630 social preview image |
 | `favicon.svg` | Site root | Final app icon (consider adding PNG + apple-touch-icon) |
 
@@ -132,7 +129,7 @@ Steps:
 
 The statement file lives at `/.well-known/assetlinks.json`. Steps:
 
-1. Replace `ANDROID_PACKAGE_NAME` and `ANDROID_SHA256_CERT_FINGERPRINT` (release certificate, colon-separated uppercase hex).
+1. Replace `ANDROID_SHA256_CERT_FINGERPRINT` (release certificate, colon-separated uppercase hex). The package name is already set to `com.milesau.Outfits`.
 2. Deploy, then verify it is publicly reachable:
 
    ```sh

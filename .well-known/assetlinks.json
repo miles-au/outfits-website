@@ -3,7 +3,7 @@
     "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
-      "package_name": "ANDROID_PACKAGE_NAME",
+      "package_name": "com.milesau.Outfits",
       "sha256_cert_fingerprints": ["ANDROID_SHA256_CERT_FINGERPRINT"]
     }
   }
