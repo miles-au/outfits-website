@@ -50,14 +50,15 @@ Search the project for these strings and replace every occurrence:
 |---|---|---|
 | `https://apps.apple.com/app/idAPP_STORE_ID` | `index.html`, `invite/index.html` | Real App Store product URL |
 | `https://play.google.com/store/apps/details?id=ANDROID_PACKAGE_NAME` | `index.html`, `invite/index.html` | Real Google Play product URL |
-| `support@outfitstravel.app` | `support/`, `privacy/`, `terms/` | Real support email address |
+| `support@outfitstravel.app` | `support/` | Real support email address (legal pages use `miles.d.au@gmail.com` from the canonical policy) |
 | `APPLE_TEAM_ID` | `.well-known/apple-app-site-association` | Apple Developer Team ID (e.g. `ABCDE12345`) |
 | `IOS_BUNDLE_ID` | `.well-known/apple-app-site-association` | iOS bundle identifier (e.g. `app.outfitstravel.ios`) |
 | `ANDROID_PACKAGE_NAME` | `.well-known/assetlinks.json` (+ Play URLs above) | Android application ID (e.g. `app.outfitstravel.android`) |
 | `ANDROID_SHA256_CERT_FINGERPRINT` | `.well-known/assetlinks.json` | SHA-256 fingerprint of the **release** signing certificate |
 | `/assets/og-image.png` | All pages (`og:image` / `twitter:image`) | A real 1200×630 social preview image |
 | `favicon.svg` | Site root | Final app icon (consider adding PNG + apple-touch-icon) |
-| `TODO` sections | `privacy/index.html`, `terms/index.html` | Lawyer-reviewed legal copy and effective dates |
+
+The Privacy Policy and Terms pages contain the canonical legal copy ported from the SwiftyIndie site (`src/components/Outfits/PrivacyPolicy.js` and `src/components/Standard/Terms.js`). Keep them in sync if the SwiftyIndie versions change.
 
 To get the Android fingerprint:
 
