@@ -1,0 +1,27 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["APPLE_TEAM_ID.IOS_BUNDLE_ID"],
+        "components": [
+          {
+            "/": "/invite/",
+            "?": { "token": "?*" },
+            "comment": "Invitation links with a token query parameter, e.g. /invite/?token=..."
+          },
+          {
+            "/": "/invite/",
+            "comment": "Bare invitation path"
+          },
+          {
+            "/": "/invite/*",
+            "comment": "Any future path-based invitation URLs"
+          }
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": ["APPLE_TEAM_ID.IOS_BUNDLE_ID"]
+  }
+}

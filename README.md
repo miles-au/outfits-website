@@ -1,0 +1,154 @@
+# Outfits — outfitstravel.app
+
+Static marketing and support website for **Outfits**, the travel outfit planner for iOS and Android. Built with plain HTML, CSS, and vanilla JavaScript. No frameworks, no build step, no analytics, no cookies, no third-party scripts.
+
+The website is intentionally minimal: the product lives in the mobile apps. This site exists to provide a landing page, legal pages, support, and the Universal Link / Android App Link infrastructure for collaborative trip invitations.
+
+## Structure
+
+```
+.
+├── index.html                      Landing page
+├── styles.css                      Single shared stylesheet (design tokens + components)
+├── script.js                       Shared behaviour (footer year, scroll reveals)
+├── 404.html                        Custom not-found page (served automatically by GitHub Pages)
+├── favicon.svg                     Placeholder favicon
+├── CNAME                           Custom domain for GitHub Pages
+├── .nojekyll                       Disables Jekyll so .well-known/ is served as-is
+├── privacy/index.html              Privacy Policy (placeholder — needs legal review)
+├── terms/index.html                Terms of Service (placeholder — needs legal review)
+├── support/index.html              Support page with FAQ
+├── invite/
+│   ├── index.html                  Invitation landing page
+│   └── invite.js                   Token masking + platform detection (no redirects, no tracking)
+├── .well-known/
+│   ├── apple-app-site-association  iOS Universal Links (JSON, no file extension)
+│   └── assetlinks.json             Android App Links
+└── .github/workflows/deploy-pages.yml  Auto-deploy on push to main
+```
+
+## Running locally
+
+There is no build step. Because the site uses root-absolute paths (`/styles.css`, `/invite/`), serve it from the project root rather than opening files directly:
+
+```sh
+cd website   # or the repository root once this is its own repo
+python3 -m http.server 8000
+```
+
+Then open <http://localhost:8000>. To test the invitation page, visit:
+
+```
+http://localhost:8000/invite/?token=TEST_TOKEN
+```
+
+## Placeholders you must replace
+
+Search the project for these strings and replace every occurrence:
+
+| Placeholder | Where | Replace with |
+|---|---|---|
+| `https://apps.apple.com/app/idAPP_STORE_ID` | `index.html`, `invite/index.html` | Real App Store product URL |
+| `https://play.google.com/store/apps/details?id=ANDROID_PACKAGE_NAME` | `index.html`, `invite/index.html` | Real Google Play product URL |
+| `support@outfitstravel.app` | `support/`, `privacy/`, `terms/` | Real support email address |
+| `APPLE_TEAM_ID` | `.well-known/apple-app-site-association` | Apple Developer Team ID (e.g. `ABCDE12345`) |
+| `IOS_BUNDLE_ID` | `.well-known/apple-app-site-association` | iOS bundle identifier (e.g. `app.outfitstravel.ios`) |
+| `ANDROID_PACKAGE_NAME` | `.well-known/assetlinks.json` (+ Play URLs above) | Android application ID (e.g. `app.outfitstravel.android`) |
+| `ANDROID_SHA256_CERT_FINGERPRINT` | `.well-known/assetlinks.json` | SHA-256 fingerprint of the **release** signing certificate |
+| `/assets/og-image.png` | All pages (`og:image` / `twitter:image`) | A real 1200×630 social preview image |
+| `favicon.svg` | Site root | Final app icon (consider adding PNG + apple-touch-icon) |
+| `TODO` sections | `privacy/index.html`, `terms/index.html` | Lawyer-reviewed legal copy and effective dates |
+
+To get the Android fingerprint:
+
+```sh
+keytool -list -v -keystore your-release.keystore | grep SHA256
+```
+
+If Google Play App Signing manages your release key, copy the fingerprint from **Play Console → Setup → App signing** instead.
+
+## Deploying to GitHub Pages
+
+1. Create a GitHub repository and push this folder as the repository root of the `main` branch.
+2. In the repository, go to **Settings → Pages** and set **Source** to **GitHub Actions**.
+3. Push to `main`. The workflow at `.github/workflows/deploy-pages.yml` uploads the site and deploys it automatically. You can also trigger it manually from the **Actions** tab.
+4. The `.nojekyll` file is required — without it, Jekyll processing can interfere with serving the `.well-known/` directory.
+
+## Connecting outfitstravel.app
+
+1. The `CNAME` file in this repository already contains `outfitstravel.app`; GitHub Pages picks it up on deploy.
+2. In **Settings → Pages → Custom domain**, enter `outfitstravel.app` and save.
+3. Configure DNS at your domain registrar:
+
+   **Apex domain (`outfitstravel.app`)** — four `A` records pointing at GitHub Pages:
+
+   ```
+   A  @  185.199.108.153
+   A  @  185.199.109.153
+   A  @  185.199.110.153
+   A  @  185.199.111.153
+   ```
+
+   Optionally add the equivalent `AAAA` records for IPv6 (`2606:50c0:8000::153` through `2606:50c0:8003::153`).
+
+   **`www` subdomain (recommended)** — a `CNAME` record so `www.outfitstravel.app` redirects to the apex:
+
+   ```
+   CNAME  www  <your-github-username>.github.io
+   ```
+
+4. Back in **Settings → Pages**, wait for the DNS check to pass, then enable **Enforce HTTPS**. Certificate provisioning can take up to an hour after DNS propagates.
+
+Note: the `.app` TLD is on the HSTS preload list, so the site **must** be served over HTTPS — which GitHub Pages provides once the certificate is issued.
+
+## Universal Links (iOS)
+
+The association file lives at `/.well-known/apple-app-site-association`. It must:
+
+- be served with **no file extension** (it is),
+- be valid JSON (it is — but re-validate after editing),
+- be publicly accessible over HTTPS with no redirects.
+
+Steps:
+
+1. Replace `APPLE_TEAM_ID` and `IOS_BUNDLE_ID` in the file (format: `TEAMID.bundle.id`).
+2. Deploy, then verify the file is reachable:
+
+   ```sh
+   curl -i https://outfitstravel.app/.well-known/apple-app-site-association
+   ```
+
+   You should get `200 OK` and the JSON body. Apple's CDN fetches this file, so it must be publicly accessible — no auth, no bot-blocking.
+
+3. **In the iOS app** (not part of this website): add the Associated Domains capability with the entitlement `applinks:outfitstravel.app`, and handle incoming `https://outfitstravel.app/invite/?token=...` URLs in your scene/app delegate or SwiftUI `onOpenURL`.
+4. Apple caches the association file on its CDN; after changes, reinstalling the app or waiting up to ~24 hours may be needed. You can check Apple's CDN copy at:
+
+   ```
+   https://app-site-association.cdn-apple.com/a/v1/outfitstravel.app
+   ```
+
+## Android App Links
+
+The statement file lives at `/.well-known/assetlinks.json`. Steps:
+
+1. Replace `ANDROID_PACKAGE_NAME` and `ANDROID_SHA256_CERT_FINGERPRINT` (release certificate, colon-separated uppercase hex).
+2. Deploy, then verify it is publicly reachable:
+
+   ```sh
+   curl -i https://outfitstravel.app/.well-known/assetlinks.json
+   ```
+
+   You can also use Google's validator:
+
+   ```
+   https://digitalassetlinks.googleapis.com/v1/statements:list?source.web.site=https://outfitstravel.app&relation=delegate_permission/common.handle_all_urls
+   ```
+
+3. **In the Android app** (not part of this website): declare an intent filter with `android:autoVerify="true"` for `https://outfitstravel.app` covering the `/invite/` path, and handle the incoming intent's data URI to extract the token.
+
+## How invitations work
+
+- Invitation URLs look like `https://outfitstravel.app/invite/?token=INVITE_TOKEN`.
+- If the app is installed and links are verified, the OS opens the app directly and the website is never shown.
+- If the app is not installed, this website shows a landing page that masks the token, explains the flow, and links to the correct store for the visitor's platform. The "I already have Outfits" button links back to the exact same invitation URL so tapping it re-fires the app link after installation.
+- **The website never validates, displays, stores, or transmits invitation tokens.** All invitation validation happens inside the mobile apps and their backend.
