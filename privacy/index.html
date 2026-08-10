@@ -63,11 +63,11 @@
         <a href="https://milesau.com/SwiftyIndie/#/privacy_policy">SwiftyIndie Privacy Policy</a>.
       </p>
       <p>
-        We try to collect as little information as possible. Outfits does not
-        require you to create an account, and we do not intentionally collect
-        information that directly identifies you&mdash;such as your name, mailing
-        address, or government-issued identifiers&mdash;unless you choose to
-        contact us directly.
+        We try to collect as little information as possible. Solo use of Outfits
+        does not require an account. Optional shared trips use Sign in with
+        Apple. We do not intentionally collect information that directly
+        identifies you&mdash;such as your mailing address or government-issued
+        identifiers&mdash;unless you choose to contact us directly.
       </p>
 
       <h2 id="data-on-your-device">Data on your device</h2>
@@ -105,6 +105,34 @@
         and coordinates, when available) to our cloud gateway so an AI model can
         propose outfits. Planning requests do not include clothing photos.
         Results are returned to the app so you can review and apply them.
+      </p>
+
+      <h2 id="shared-trips">Optional shared trips (Sign in with Apple)</h2>
+      <p>
+        Shared trips are optional. Solo trips and your closet stay on your device
+        unless you choose to share a trip. To collaborate, you sign in with Apple
+        (or a staging test account in development builds). We store an account
+        profile for collaboration (such as a display name you choose) and the
+        shared-trip content you and other members add: trip metadata (name,
+        dates, location, notes), day notes, outfit plans, and clothing item
+        snapshots needed so others can see outfits&mdash;including thumbnail
+        photos uploaded for items that appear on the shared trip.
+      </p>
+      <p>
+        Shared-trip data is stored in our private backend (hosted database and
+        object storage accessed only through our cloud gateway). Other members
+        of a trip can see the shared content for that trip. Free shared trips
+        may expire after a retention period; Jetsetter hosts can keep trips
+        longer. You can leave a shared trip (your local copy can remain on your
+        device), and hosts can delete a shared trip for everyone. You can also
+        delete your Outfits account in Settings, which removes your cloud
+        account and shared-trip cloud data; local closet data on the device is
+        not automatically wiped.
+      </p>
+      <p>
+        Authentication for shared trips uses Sign in with Apple via our identity
+        provider. We do not put Supabase database or storage credentials in the
+        app; the app talks to our gateway with your user session.
       </p>
 
       <h2 id="ai-service-providers">AI service providers</h2>
@@ -187,9 +215,10 @@
       <p>
         You can stop collection related to optional AI features by turning off
         AI Closet Tags in Settings and by not using Plan my outfits / Suggest
-        outfits. You can stop all collection by uninstalling the app. If you
-        contact us and want us to delete information you previously sent
-        directly, email
+        outfits. You can leave or avoid shared trips, and you can delete your
+        Outfits account in Settings to remove cloud collaboration data. You can
+        stop all collection by uninstalling the app. If you contact us and want
+        us to delete information you previously sent directly, email
         <a href="mailto:miles.d.au@gmail.com">miles.d.au@gmail.com</a>.
       </p>
 
