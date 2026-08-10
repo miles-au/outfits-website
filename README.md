@@ -21,6 +21,9 @@ The website is intentionally minimal: the product lives in the mobile apps. This
 ├── invite/
 │   ├── index.html                  Invitation landing page
 │   └── invite.js                   Token masking + platform detection (no redirects, no tracking)
+├── join/
+│   ├── index.html                  Shared-trip join landing (code query or path)
+│   └── join.js                     Shows invite code + outfits:// deep link
 ├── .well-known/
 │   ├── apple-app-site-association  iOS Universal Links (JSON, no file extension)
 │   └── assetlinks.json             Android App Links
@@ -49,8 +52,7 @@ Search the project for these strings and replace every occurrence:
 | Placeholder | Where | Replace with |
 |---|---|---|
 | `support@outfitstravel.app` | `support/` | Real support email address (legal pages use `miles.d.au@gmail.com` from the canonical policy) |
-| `APPLE_TEAM_ID` | `.well-known/apple-app-site-association` | Apple Developer Team ID (e.g. `ABCDE12345`) |
-| `IOS_BUNDLE_ID` | `.well-known/apple-app-site-association` | iOS bundle identifier (e.g. `app.outfitstravel.ios`) |
+| ~~`APPLE_TEAM_ID` / `IOS_BUNDLE_ID`~~ | `.well-known/apple-app-site-association` | **Set:** `H6W2DP26MF.com.milesau.Outfits` (includes `/join/*`) |
 | `ANDROID_SHA256_CERT_FINGERPRINT` | `.well-known/assetlinks.json` | SHA-256 fingerprint of the **release** signing certificate (package name `com.milesau.Outfits` is already filled in) |
 | `/assets/og-image.png` | All pages (`og:image` / `twitter:image`) | A real 1200×630 social preview image |
 | `favicon.svg` | Site root | Final app icon (consider adding PNG + apple-touch-icon) |

@@ -2,7 +2,7 @@
   "applinks": {
     "details": [
       {
-        "appIDs": ["APPLE_TEAM_ID.IOS_BUNDLE_ID"],
+        "appIDs": ["H6W2DP26MF.com.milesau.Outfits"],
         "components": [
           {
             "/": "/invite/",
@@ -16,12 +16,25 @@
           {
             "/": "/invite/*",
             "comment": "Any future path-based invitation URLs"
+          },
+          {
+            "/": "/join/*",
+            "comment": "Shared-trip invite codes, e.g. /join/ABC123XYZ"
+          },
+          {
+            "/": "/join/",
+            "?": { "code": "?*" },
+            "comment": "Query-style join links"
+          },
+          {
+            "/": "/join/",
+            "comment": "Bare join path"
           }
         ]
       }
     ]
   },
   "webcredentials": {
-    "apps": ["APPLE_TEAM_ID.IOS_BUNDLE_ID"]
+    "apps": ["H6W2DP26MF.com.milesau.Outfits"]
   }
 }
