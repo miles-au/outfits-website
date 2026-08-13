@@ -27,7 +27,7 @@ The website is intentionally minimal: the product lives in the mobile apps. This
 ├── .well-known/
 │   ├── apple-app-site-association  iOS Universal Links (JSON, no file extension)
 │   └── assetlinks.json             Android App Links
-└── .github/workflows/deploy-pages.yml  Auto-deploy on push to main
+└── robots.txt / sitemap.xml        Crawl hints for outfitstravel.app
 ```
 
 ## Running locally
@@ -70,8 +70,8 @@ If Google Play App Signing manages your release key, copy the fingerprint from *
 ## Deploying to GitHub Pages
 
 1. Create a GitHub repository and push this folder as the repository root of the `main` branch.
-2. In the repository, go to **Settings → Pages** and set **Source** to **GitHub Actions**.
-3. Push to `main`. The workflow at `.github/workflows/deploy-pages.yml` uploads the site and deploys it automatically. You can also trigger it manually from the **Actions** tab.
+2. In the repository, go to **Settings → Pages** and set **Source** to **Deploy from a branch**, branch `main`, folder `/`.
+3. Push to `main`. GitHub’s built-in Pages builder publishes the repo root. There is no Actions deploy workflow — this site has no build step.
 4. The `.nojekyll` file is required — without it, Jekyll processing can interfere with serving the `.well-known/` directory.
 
 ## Connecting outfitstravel.app
