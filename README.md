@@ -12,7 +12,9 @@ The website is intentionally minimal: the product lives in the mobile apps. This
 ├── styles.css                      Single shared stylesheet (design tokens + components)
 ├── script.js                       Shared behaviour (footer year, scroll reveals)
 ├── 404.html                        Custom not-found page (served automatically by GitHub Pages)
-├── favicon.svg                     Placeholder favicon
+├── favicon.svg                     App icon (SVG)
+├── favicon.png                     32×32 PNG fallback
+├── apple-touch-icon.png            180×180 iOS home-screen icon
 ├── CNAME                           Custom domain for GitHub Pages
 ├── .nojekyll                       Disables Jekyll so .well-known/ is served as-is
 ├── privacy/index.html              Privacy Policy (placeholder — needs legal review)
@@ -55,7 +57,7 @@ Search the project for these strings and replace every occurrence:
 | ~~`APPLE_TEAM_ID` / `IOS_BUNDLE_ID`~~ | `.well-known/apple-app-site-association` | **Set:** `H6W2DP26MF.com.milesau.Outfits` (includes `/join/*`) |
 | ~~`ANDROID_SHA256_CERT_FINGERPRINT`~~ | `.well-known/assetlinks.json` | **Set:** upload/release `84:6B:4E:15:…:78:2D` and debug `E8:CB:3F:1F:…:41:9D` (package `com.milesau.Outfits`). If Play App Signing is on, also add the **App signing** SHA-256 from Play Console. |
 | `/assets/og-image.png` | All pages (`og:image` / `twitter:image`) | A real 1200×630 social preview image |
-| `favicon.svg` | Site root | Final app icon (consider adding PNG + apple-touch-icon) |
+| ~~`favicon.svg`~~ | Site root | **Set:** new app icon (`favicon.svg`, `favicon.png`, `apple-touch-icon.png`) |
 
 The Privacy Policy and Terms pages contain the canonical legal copy ported from the SwiftyIndie site (`src/components/Outfits/PrivacyPolicy.js` and `src/components/Standard/Terms.js`). Keep them in sync if the SwiftyIndie versions change.
 

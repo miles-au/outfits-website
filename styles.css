@@ -295,9 +295,12 @@ svg {
   text-decoration: none;
 }
 
-.brand svg {
+.brand svg,
+.brand img {
   width: 1.75rem;
   height: 1.75rem;
+  display: block;
+  border-radius: 0.4rem;
 }
 
 .site-nav {
