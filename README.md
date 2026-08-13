@@ -12,13 +12,14 @@ The website is intentionally minimal: the product lives in the mobile apps. This
 ├── styles.css                      Single shared stylesheet (design tokens + components)
 ├── script.js                       Shared behaviour (footer year, scroll reveals)
 ├── 404.html                        Custom not-found page (served automatically by GitHub Pages)
+├── favicon.ico                     16/32/48 ICO (Safari / default tab icon)
 ├── favicon.svg                     App icon (SVG)
 ├── favicon.png                     32×32 PNG fallback
 ├── apple-touch-icon.png            180×180 iOS home-screen icon
 ├── CNAME                           Custom domain for GitHub Pages
 ├── .nojekyll                       Disables Jekyll so .well-known/ is served as-is
-├── privacy/index.html              Privacy Policy (placeholder — needs legal review)
-├── terms/index.html                Terms of Service (placeholder — needs legal review)
+├── privacy/index.html              Privacy Policy (keep in sync with iOS privacy.json + Android data_safety.json)
+├── terms/index.html                Terms of Service
 ├── support/index.html              Support page with FAQ
 ├── invite/
 │   ├── index.html                  Invitation landing page
@@ -53,7 +54,7 @@ Search the project for these strings and replace every occurrence:
 
 | Placeholder | Where | Replace with |
 |---|---|---|
-| `support@outfitstravel.app` | `support/` | Real support email address (legal pages use `miles.d.au@gmail.com` from the canonical policy) |
+| `support@outfitstravel.app` | `support/` | Primary support email (privacy policy also lists `miles.d.au@gmail.com` as a deletion fallback) |
 | ~~`APPLE_TEAM_ID` / `IOS_BUNDLE_ID`~~ | `.well-known/apple-app-site-association` | **Set:** `H6W2DP26MF.com.milesau.Outfits` (includes `/join/*`) |
 | ~~`ANDROID_SHA256_CERT_FINGERPRINT`~~ | `.well-known/assetlinks.json` | **Set:** upload/release `84:6B:4E:15:…:78:2D` and debug `E8:CB:3F:1F:…:41:9D` (package `com.milesau.Outfits`). If Play App Signing is on, also add the **App signing** SHA-256 from Play Console. |
 | `/assets/og-image.png` | All pages (`og:image` / `twitter:image`) | A real 1200×630 social preview image |
