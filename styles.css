@@ -401,16 +401,6 @@ svg {
   color: var(--color-subtext);
 }
 
-.hero__art {
-  max-width: 40rem;
-  margin: clamp(2.5rem, 6vw, 4rem) auto 0;
-}
-
-.hero__art svg {
-  width: 100%;
-  height: auto;
-}
-
 /* --------------------------------------------------------------------------
    6. Sections & feature cards
    -------------------------------------------------------------------------- */
