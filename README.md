@@ -53,7 +53,7 @@ Search the project for these strings and replace every occurrence:
 |---|---|---|
 | `support@outfitstravel.app` | `support/` | Real support email address (legal pages use `miles.d.au@gmail.com` from the canonical policy) |
 | ~~`APPLE_TEAM_ID` / `IOS_BUNDLE_ID`~~ | `.well-known/apple-app-site-association` | **Set:** `H6W2DP26MF.com.milesau.Outfits` (includes `/join/*`) |
-| `ANDROID_SHA256_CERT_FINGERPRINT` | `.well-known/assetlinks.json` | SHA-256 fingerprint of the **release** signing certificate (package name `com.milesau.Outfits` is already filled in) |
+| ~~`ANDROID_SHA256_CERT_FINGERPRINT`~~ | `.well-known/assetlinks.json` | **Set:** upload/release `84:6B:4E:15:…:78:2D` and debug `E8:CB:3F:1F:…:41:9D` (package `com.milesau.Outfits`). If Play App Signing is on, also add the **App signing** SHA-256 from Play Console. |
 | `/assets/og-image.png` | All pages (`og:image` / `twitter:image`) | A real 1200×630 social preview image |
 | `favicon.svg` | Site root | Final app icon (consider adding PNG + apple-touch-icon) |
 
@@ -131,7 +131,7 @@ Steps:
 
 The statement file lives at `/.well-known/assetlinks.json`. Steps:
 
-1. Replace `ANDROID_SHA256_CERT_FINGERPRINT` (release certificate, colon-separated uppercase hex). The package name is already set to `com.milesau.Outfits`.
+1. Fingerprints are already set (upload/release + debug). If Play App Signing is on, add the Play **App signing** SHA-256 to the same array.
 2. Deploy, then verify it is publicly reachable:
 
    ```sh

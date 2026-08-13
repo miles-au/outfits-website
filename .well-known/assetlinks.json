@@ -4,7 +4,10 @@
     "target": {
       "namespace": "android_app",
       "package_name": "com.milesau.Outfits",
-      "sha256_cert_fingerprints": ["ANDROID_SHA256_CERT_FINGERPRINT"]
+      "sha256_cert_fingerprints": [
+        "84:6B:4E:15:D4:7C:FD:59:EA:BD:49:87:24:65:5E:0B:A7:0E:B0:D7:E1:AC:21:A8:AD:16:5B:F2:21:35:78:2D",
+        "E8:CB:3F:1F:1B:48:92:4D:A8:86:1E:80:63:4D:B5:BD:EA:BF:0D:0D:F0:C9:BA:69:79:82:C0:83:F2:BC:41:9D"
+      ]
     }
   }
 ]
