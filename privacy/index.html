@@ -113,12 +113,20 @@
         unless you choose to share a trip. To collaborate, you sign in with Apple
         on iOS or Google on Android (development builds may also offer a staging
         test account). We store an account profile for collaboration (a user
-        identifier, an optional display name you choose, and on Android the email
-        Google provides for sign-in) and the shared-trip content you and other
-        members add: trip metadata (name, dates, location, notes), day notes,
-        outfit plans, and clothing item snapshots needed so others can see
-        outfits&mdash;including thumbnail photos uploaded for items that appear
-        on the shared trip.
+        identifier, an optional display name you choose, an optional profile
+        photo you upload, and on Android the email Google provides for sign-in)
+        and the shared-trip content you and other members add: trip metadata
+        (name, dates, location, notes), day notes, outfit plans, and clothing
+        item snapshots needed so others can see outfits&mdash;including
+        thumbnail photos uploaded for items that appear on the shared trip.
+      </p>
+      <p>
+        If you upload a profile photo, it is stored in our private object
+        storage and is visible to members of shared trips you join. You can
+        remove the photo in the app, and deleting your Outfits account removes
+        the stored photo with your other cloud account data. We do not use
+        profile photos for advertising, face recognition, or training AI
+        models.
       </p>
       <p>
         Shared-trip data is stored in our private backend (hosted database and
@@ -243,12 +251,11 @@
       </p>
 
       <p>
-        <strong>Effective date: August 13, 2026.</strong> Documented Android
-        Google Sign-In (email used for the collaboration account), account
-        deletion in Settings, and that shared-trip members can see trip content
-        and outfit thumbnails. Earlier: optional AI closet tagging and trip/day
-        planning (cloud gateway, Moondream, OpenAI); on-device vs uploaded
-        images; destination coordinates used with planning.
+        <strong>Effective date: August 17, 2026.</strong> Documented optional
+        shared-trip profile photos (private storage; visible to trip members;
+        removable / deleted with account). Earlier: Android Google Sign-In,
+        account deletion, shared-trip outfit thumbnails; optional AI closet
+        tagging and trip/day planning; on-device vs uploaded images.
       </p>
     </article>
   </main>
