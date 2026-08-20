@@ -7,6 +7,30 @@
   <meta name="description" content="This page doesn't exist. Head back to the Outfits homepage.">
   <meta name="robots" content="noindex">
 
+  <!--
+    GitHub Pages has no path rewrites. Unknown URLs, including /join/{code},
+    are served as this document with HTTP 404. Detect a join-code path before
+    first paint and swap in the join landing so visitors never see the 404
+    copy. Other missing paths keep the not-found page.
+  -->
+  <script>
+    (function () {
+      var parts = location.pathname.split("/").filter(Boolean);
+      if (parts.length >= 2 && parts[0] === "join") {
+        var code = parts[1].trim();
+        if (code) {
+          document.documentElement.classList.add("is-join-path");
+          document.title = "Join a trip — Outfits";
+        }
+      }
+    })();
+  </script>
+  <style>
+    [data-join-view] { display: none !important; }
+    html.is-join-path [data-error-view] { display: none !important; }
+    html.is-join-path [data-join-view] { display: flex !important; }
+  </style>
+
   <meta name="theme-color" content="#fafaf8" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0e0e0f" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="/favicon.ico" sizes="32x32">
@@ -16,18 +40,7 @@
 
   <link rel="stylesheet" href="/styles.css">
   <script src="/script.js" defer></script>
-  <!-- GitHub Pages has no path rewrite: /join/{code} lands here → query form. -->
-  <script>
-    (function () {
-      var parts = location.pathname.split("/").filter(Boolean);
-      if (parts.length >= 2 && parts[0] === "join") {
-        var code = parts[1].trim().toUpperCase();
-        if (code) {
-          location.replace("/join/?code=" + encodeURIComponent(code));
-        }
-      }
-    })();
-  </script>
+  <script src="/join/join.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -46,7 +59,7 @@
   </header>
 
   <main id="main">
-    <div class="stage container">
+    <div class="stage container" data-error-view>
       <p class="error-code fade-up" aria-hidden="true">404</p>
       <h1 class="fade-up">This page took a different trip.</h1>
       <p class="lede fade-up fade-up--late">
@@ -56,6 +69,26 @@
       <p class="fade-up fade-up--late">
         <a class="btn btn--primary" href="/">Back to home</a>
       </p>
+    </div>
+
+    <div class="stage container" data-join-view>
+      <div class="card stage__card fade-up">
+        <h1>Join a shared trip</h1>
+        <p class="lede">
+          Open in Outfits if you already have the app. New here? Install Outfits,
+          then enter this code under <strong>Join a trip</strong>.
+        </p>
+        <p class="invite-token" data-join-code-wrap hidden>
+          <span>Code:</span>
+          <strong data-join-code aria-live="polite"></strong>
+        </p>
+        <div class="invite-actions">
+          <a class="btn btn--primary" data-open-app href="outfits://join">Open in Outfits</a>
+          <a class="btn btn--primary btn--store" href="https://apps.apple.com/us/app/outfits-travel-clothing-plans/id6467569577">
+            Download on the App Store
+          </a>
+        </div>
+      </div>
     </div>
   </main>
 
