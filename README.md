@@ -57,7 +57,7 @@ Search the project for these strings and replace every occurrence:
 | `support@outfitstravel.app` | `support/` | Primary support email (privacy policy also lists `miles.d.au@gmail.com` as a deletion fallback) |
 | ~~`APPLE_TEAM_ID` / `IOS_BUNDLE_ID`~~ | `.well-known/apple-app-site-association` | **Set:** `H6W2DP26MF.com.milesau.Outfits` (includes `/join/*`) |
 | ~~`ANDROID_SHA256_CERT_FINGERPRINT`~~ | `.well-known/assetlinks.json` | **Set:** upload/release `84:6B:4E:15:…:78:2D` and debug `E8:CB:3F:1F:…:41:9D` (package `com.milesau.Outfits`). If Play App Signing is on, also add the **App signing** SHA-256 from Play Console. |
-| `/assets/og-image.png` | All pages (`og:image` / `twitter:image`) | A real 1200×630 social preview image |
+| ~~`/assets/og-image.png`~~ | All pages (`og:image` / `twitter:image`) | **Set:** 1200×630 brand share image at `/assets/og-image.png` |
 | ~~`favicon.svg`~~ | Site root | **Set:** new app icon (`favicon.svg`, `favicon.png`, `apple-touch-icon.png`) |
 
 The Privacy Policy and Terms pages contain the canonical legal copy ported from the SwiftyIndie site (`src/components/Outfits/PrivacyPolicy.js` and `src/components/Standard/Terms.js`). Keep them in sync if the SwiftyIndie versions change.
