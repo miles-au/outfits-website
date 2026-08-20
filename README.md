@@ -54,7 +54,7 @@ Search the project for these strings and replace every occurrence:
 
 | Placeholder | Where | Replace with |
 |---|---|---|
-| `support@outfitstravel.app` | `support/` | Primary support email (privacy policy also lists `miles.d.au@gmail.com` as a deletion fallback) |
+| `support@outfitstravel.app` | `support/` | Primary support email (also used as account-deletion fallback in the privacy policy) |
 | ~~`APPLE_TEAM_ID` / `IOS_BUNDLE_ID`~~ | `.well-known/apple-app-site-association` | **Set:** `H6W2DP26MF.com.milesau.Outfits` (includes `/join/*`) |
 | ~~`ANDROID_SHA256_CERT_FINGERPRINT`~~ | `.well-known/assetlinks.json` | **Set:** upload/release `84:6B:4E:15:…:78:2D` and debug `E8:CB:3F:1F:…:41:9D` (package `com.milesau.Outfits`). If Play App Signing is on, also add the **App signing** SHA-256 from Play Console. |
 | ~~`/assets/og-image.png`~~ | All pages (`og:image` / `twitter:image`) | **Set:** 1200×630 brand share image at `/assets/og-image.png` |
