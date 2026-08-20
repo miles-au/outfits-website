@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  document.addEventListener("DOMContentLoaded", function () {
+  function init() {
     var code = readCode();
     if (!code) return;
     var wrap = document.querySelector("[data-join-code-wrap]");
@@ -10,7 +10,13 @@
     if (wrap) wrap.hidden = false;
     if (el) el.textContent = code;
     if (open) open.setAttribute("href", "outfits://join/" + encodeURIComponent(code));
-  });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
 
   function readCode() {
     var params = new URLSearchParams(window.location.search);
