@@ -594,10 +594,57 @@ a.card {
   margin: 2rem 0 0;
 }
 
-.screenshot-row img {
-  width: min(100%, 18rem);
+.screenshot-row img,
+.screenshot-figure img {
+  width: min(100%, 20rem);
   height: auto;
   border-radius: 2.25rem;
+}
+
+@media (min-width: 48rem) {
+  .screenshot-row img,
+  .screenshot-figure img {
+    width: min(100%, 22rem);
+  }
+}
+
+.screenshot-figure {
+  margin: 1.75rem 0 0;
+  text-align: center;
+}
+
+.screenshot-figure img {
+  display: block;
+  margin-inline: auto;
+}
+
+.screenshot-figure figcaption {
+  margin: 0.75rem auto 0;
+  max-width: 22rem;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--color-subtext);
+}
+
+.prose-callout {
+  margin: 1.75rem 0;
+  padding: 1.125rem 1.25rem;
+  border-left: 3px solid var(--color-ink);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  background: var(--color-bg-2);
+  font-size: 1.125rem;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.prose-callout p {
+  margin: 0;
+}
+
+.prose-footnote {
+  margin-top: 1.5rem;
+  font-size: 0.9375rem;
+  color: var(--color-subtext);
 }
 
 .prose {
