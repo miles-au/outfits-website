@@ -586,6 +586,20 @@ a.card {
   color: inherit;
 }
 
+.screenshot-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  justify-content: center;
+  margin: 2rem 0 0;
+}
+
+.screenshot-row img {
+  width: min(100%, 18rem);
+  height: auto;
+  border-radius: 2.25rem;
+}
+
 .prose {
   padding-top: clamp(2rem, 5vw, 3rem);
 }
