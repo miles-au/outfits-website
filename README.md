@@ -56,7 +56,7 @@ Search the project for these strings and replace every occurrence:
 |---|---|---|
 | `support@outfitstravel.app` | `support/` | Primary support email (also used as account-deletion fallback in the privacy policy) |
 | ~~`APPLE_TEAM_ID` / `IOS_BUNDLE_ID`~~ | `.well-known/apple-app-site-association` | **Set:** `H6W2DP26MF.com.milesau.Outfits` (includes `/join/*`) |
-| ~~`ANDROID_SHA256_CERT_FINGERPRINT`~~ | `.well-known/assetlinks.json` | **Set:** upload/release `84:6B:4E:15:…:78:2D` and debug `E8:CB:3F:1F:…:41:9D` (package `com.milesau.Outfits`). If Play App Signing is on, also add the **App signing** SHA-256 from Play Console. |
+| ~~`ANDROID_SHA256_CERT_FINGERPRINT`~~ | `.well-known/assetlinks.json` | **Set:** Play App signing `16:72:6F:93:…:CA:64`, upload/release `84:6B:4E:15:…:78:2D`, and debug `E8:CB:3F:1F:…:41:9D` (package `com.milesau.Outfits`). |
 | ~~`/assets/og-image.png`~~ | All pages (`og:image` / `twitter:image`) | **Set:** 1200×630 brand share image at `/assets/og-image.png` |
 | ~~`favicon.svg`~~ | Site root | **Set:** new app icon (`favicon.svg`, `favicon.png`, `apple-touch-icon.png`) |
 
@@ -134,7 +134,7 @@ Steps:
 
 The statement file lives at `/.well-known/assetlinks.json`. Steps:
 
-1. Fingerprints are already set (upload/release + debug). If Play App Signing is on, add the Play **App signing** SHA-256 to the same array.
+1. Fingerprints are set (Play App signing + upload/release + debug).
 2. Deploy, then verify it is publicly reachable:
 
    ```sh
