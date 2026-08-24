@@ -596,15 +596,18 @@ a.card {
 
 .screenshot-row img,
 .screenshot-figure img {
-  width: min(100%, 20rem);
+  width: min(100%, 14rem);
+  max-height: 24rem;
   height: auto;
-  border-radius: 2.25rem;
+  aspect-ratio: 1320 / 2868;
+  object-fit: contain;
+  border-radius: 2rem;
 }
 
 @media (min-width: 48rem) {
   .screenshot-row img,
   .screenshot-figure img {
-    width: min(100%, 22rem);
+    width: min(100%, 16rem);
   }
 }
 
@@ -620,7 +623,7 @@ a.card {
 
 .screenshot-figure figcaption {
   margin: 0.75rem auto 0;
-  max-width: 22rem;
+  max-width: 16rem;
   font-size: 0.875rem;
   line-height: 1.45;
   color: var(--color-subtext);
